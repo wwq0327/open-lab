@@ -127,6 +127,7 @@ INSTALLED_APPS = (
 
     #myapps
     'demo',
+    'profiles',
 
     #added,
     'userena',
