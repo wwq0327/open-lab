@@ -102,6 +102,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.csrf.CsrfResponseMiddleware',
 )
 
 ROOT_URLCONF = 'openclass.urls'
@@ -128,6 +129,7 @@ INSTALLED_APPS = (
     #myapps
     'demo',
     'profiles',
+    'works',
 
     #added,
     'south',
@@ -135,6 +137,7 @@ INSTALLED_APPS = (
     'userena.contrib.umessages',
     'guardian',
     'easy_thumbnails',
+    'tagging',
 )
 
 #userena

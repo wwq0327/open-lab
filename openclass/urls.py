@@ -9,6 +9,7 @@ urlpatterns = patterns('',
                        url(r'^demo/$', include('demo.urls')),
                        url(r'^accounts/', include('profiles.urls')),
                        url(r'^$', include('home.urls')),
+                       url(r'^works/', include('works.urls')),
 )
 
 media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')

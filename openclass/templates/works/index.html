@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main %}
+{% if works %}
+{% for w in works %}
+  {% include "works/_ws_page.html" %}
+{% endfor %}
+{% else %}
+<p>暂无数据</p>
+{% endif %}
+{% endblock %}

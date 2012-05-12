@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<form method="post" action="." id="ws_create_form">
+  {{ form.as_p }}
+  <button type="submit" class="btn">创建作品</button>
+</form>
+
+{% endblock %}
