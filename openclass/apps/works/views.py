@@ -25,7 +25,9 @@ def ws_create(request):
     if request.method == 'POST':
         form = WorksForm(request.POST)
         if form.is_valid():
-            model = form.save(request.user)
+            model = form.save(commit=False)
+            model.creater = request.user
+            model.save()
             return HttpResponseRedirect(model.get_absolute_url())
     else:
         form = WorksForm()
@@ -52,7 +54,7 @@ def ws_edit(request, ws_pk):
     if request.method == 'POST':
         form = WorksForm(request.POST, instance=ws)
         if form.is_valid():
-            model = form.save(request.user)
+            model = form.save()
             return HttpResponseRedirect(model.get_absolute_url())
     else:
         form = WorksForm(instance=ws)
