@@ -1,9 +1,50 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+  <meta charset="utf-8">
   <title>open lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/bootstrap.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/bootstrap-responsive.css" media="screen">
+  <style type="text/css">
+    body { padding-top: 60px; padding-bottom: 40px; }
+  </style>
   </head>
   <body>
-  {% block main %}{% endblock %}
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">OpenLab</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active">
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">about</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    {% block main %}{% endblock %}
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        相关信息
+      </div>
+    </div>
+  </div>
   </body>
 </html>

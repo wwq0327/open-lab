@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'profiles',
 
     #added,
+    'south',
     'userena',
     'userena.contrib.umessages',
     'guardian',
