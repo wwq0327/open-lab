@@ -6,6 +6,7 @@
 {% block sidebar %}
   <div class="sidebar">
     <div style="padding-top: 20px;">
+      已有帐号，直接<a href="/accounts/signin/">登录</a>
     </div>
   </div>
 {% endblock %}
@@ -14,7 +15,6 @@
 
 {% block content %}
   <div class="content">
-
 <div class="login">
     <form action="" method="post" class="">
       <fieldset>
@@ -27,11 +27,12 @@
 <p><label for="id_password2">确认密码</label> <input id="id_password2" type="password" class="required" name="password2" /></p>
         <div class="actions">
           <p>
-            <label>&nbsp;</label><button type="submit">注册</button>
+            <label>&nbsp;</label><button class="btn btn-primary" type="submit">注册</button>
           </p>
         </div>
       </fieldset>
     </form>
   </div>
 </div>
+
 {% endblock %}
