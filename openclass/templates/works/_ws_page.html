@@ -1,5 +1,18 @@
   <div>
     <h3><a href="{{ w.get_absolute_url }}">{{ w.title }}</a></h3>
+    <p>发布时间： {{ w.pub_date|date:"Y-m-d H:i" }} 作者： {{ w.creater.username }}
+    {% if is_edit %}
+      <a href="{% url ws_edit w.pk %}">编辑作品</a>
+    {% endif %}
+    </p>
     <p>{{ w.content_html|safe }}</p>
-    <p>{{ w.tags }} </p>
+    {% if w.obj_tags %}
+    <p>
+      {% for tag in w.obj_tags %}
+        <a href="#{{ tag }}">{{ tag }} </a>
+      {% endfor %}
+    </p>
+    {% else %}
+      <p> None </p>
+    {% endif %}
   </div>

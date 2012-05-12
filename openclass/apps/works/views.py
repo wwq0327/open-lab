@@ -36,12 +36,31 @@ def ws_create(request):
 
 def ws_page(request, ws_pk):
     w = get_object_or_404(Works, pk=ws_pk)
-
+    is_edit = request.user.is_authenticated() and request.user == w.creater # 当前作品是否是当前用户发布的
     return render_to_response('works/ws_page.html',
                               {
                                   'w': w,
+                                  'is_edit': is_edit,
                                   },
                               context_instance=RequestContext(request))
+
+@login_required
+def ws_edit(request, ws_pk):
+    ws = get_object_or_404(Works, pk=ws_pk)
+    if request.user != ws.creater:
+        return HttpResponstForbindden()
+    if request.method == 'POST':
+        form = WorksForm(request.POST, instance=ws)
+        if form.is_valid():
+            model = form.save(request.user)
+            return HttpResponseRedirect(model.get_absolute_url())
+    else:
+        form = WorksForm(instance=ws)
+
+    return render_to_response('works/ws_create.html',
+                              {'form': form},
+                              context_instance=RequestContext(request))
+
 
 
 

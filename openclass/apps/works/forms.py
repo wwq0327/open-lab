@@ -4,6 +4,7 @@ from django import forms
 from bootstrap.forms import BootstrapModelForm
 from works.models import Works
 
+#class WorksForm(forms.ModelForm):
 class WorksForm(BootstrapModelForm):
     class Meta:
         model = Works
