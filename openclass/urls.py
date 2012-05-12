@@ -8,6 +8,7 @@ from django.conf import settings
 urlpatterns = patterns('',
                        url(r'^demo/$', include('demo.urls')),
                        url(r'^accounts/', include('profiles.urls')),
+                       url(r'^$', include('home.urls')),
 )
 
 media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')
