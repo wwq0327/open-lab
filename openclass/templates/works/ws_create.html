@@ -2,9 +2,15 @@
 
 {% block main %}
 
-<form method="post" action="." id="ws_create_form">
-  {{ form.as_p }}
-  <button type="submit" class="btn">创建作品</button>
+<form method="post" action="." id="ws_create_form" class="form-horizontal">
+  <fieldset>
+    {{ form.as_div }}
+    <div class="form-actions">
+      <p>
+      <input type="submit" value="创建作品" class="btn" name="submit" />
+      </p>
+    </div>
+  </fieldset>
 </form>
 
 {% endblock %}

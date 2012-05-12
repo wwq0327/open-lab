@@ -1,0 +1,8 @@
+#id_content {
+    width: 64em;
+    height: 36em;
+}
+
+#id_title, #id_tags {
+    width: 28em;
+}

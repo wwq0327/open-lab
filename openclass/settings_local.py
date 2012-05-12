@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'guardian',
     'easy_thumbnails',
     'tagging',
+    'bootstrap',
 )
 
 #userena
