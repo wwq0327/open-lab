@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "sub_base.html" %}
 
-{% block main %}
+{% block content %}
 {% if works %}
 {% for w in works %}
   {% include "works/_ws_page.html" %}
@@ -8,4 +8,8 @@
 {% else %}
 <p>暂无数据</p>
 {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+侧边--------------------------------------------------------------------
 {% endblock %}

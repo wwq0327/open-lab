@@ -1,11 +1,17 @@
-{% extends "base.html" %}
+{% extends "sub_base.html" %}
 
-{% block main %}
+{% block content %}
   {% if w %}
     {% include "works/_ws_page.html" %}
   {% else %}
     <p?页面不存在</p>
   {% endif %}
+
+{% endblock %}
+
+{% block sidebar %}
+
+aa
 
 {% endblock %}
 
