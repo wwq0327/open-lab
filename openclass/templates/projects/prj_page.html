@@ -1,0 +1,13 @@
+{% extends "sub_base.html" %}
+
+{% block content %}
+  {% if p %}
+    {% include "projects/_prj_page.html" %}
+  {% else %}
+    <p>页面不存在</p>
+  {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+  aa
+{% endblock %}

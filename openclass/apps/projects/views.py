@@ -11,14 +11,20 @@ from projects.models import Projects
 from projects.forms import ProjectsForm
 
 def index(request):
-    pass
+    prjs = Projects.objects.all()
+    return render_to_response('projects/index.html',
+                              {'prjs': prjs},
+                              context_instance=RequestContext(request))
 
 @login_required
 def prj_create(request):
     if request.method == 'POST':
-        form = ProjectsForm(request.POST)
+        form = ProjectsForm(request.POST, request.FILES)
         if form.is_valid():
-            pass
+            model = form.save(commit=False)
+            model.creater = request.user
+            model.save()
+            return HttpResponseRedirect(model.get_absolute_url())
     else:
         form = ProjectsForm()
 
@@ -27,4 +33,7 @@ def prj_create(request):
                               context_instance=RequestContext(request))
 
 def prj_page(request, prj_pk):
-    pass
+    p = get_object_or_404(Projects, pk=prj_pk)
+    return render_to_response('projects/prj_page.html',
+                              {'p': p},
+                              context_instance=RequestContext(request))

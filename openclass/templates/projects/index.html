@@ -1,0 +1,15 @@
+{% extends "sub_base.html" %}
+
+{% block content %}
+{% if prjs %}
+  {% for p in prjs %}
+    {% include "projects/_prj_page.html" %}
+  {% endfor %}
+{% else %}
+  <p>暂无数据</p>
+{% endif %}
+{% endblock %}
+
+{% block sidebar %}
+  侧边
+{% endblock %}

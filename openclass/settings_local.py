@@ -177,6 +177,10 @@ ANONYMOUS_USER_ID = -1
 
 PAGINATION_DEFAULT_PAGINATION = 10
 
+#pic
+MAX_IMAGE_SIZE = 1024 * 700
+MAX_UPLOAD_SIZE = 1024 * 1024 * 50
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.
