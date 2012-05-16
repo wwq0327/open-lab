@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<form action="." method="post" id="prj_create_form" class="form-horizontal">
+      <fieldset>
+      {{ form.as_div }}
+      <div class="form-actions">
+        <p><input type="submit" value="创建项目" class="btn" name="submit" /></p>
+      </div>
+      </fieldset>
+</form>
+
+{% endblock %}

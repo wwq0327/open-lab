@@ -140,7 +140,7 @@ INSTALLED_APPS = (
     #myapps
     'demo',
     'profiles',
-    'works',
+#    'works',
     'projects',
 
     #added,

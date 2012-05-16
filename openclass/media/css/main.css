@@ -3,6 +3,12 @@
     height: 36em;
 }
 
-#id_title, #id_tags {
+#id_describe {
+    width: 64em;
+    height: 12em;
+}
+
+
+#id_title, #id_tags, #id_video {
     width: 28em;
 }
