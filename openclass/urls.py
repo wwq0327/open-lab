@@ -6,6 +6,7 @@ from django.conf import settings
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+                       url(r'^comments/', include('django.contrib.comments.urls')),
                        url(r'^demo/$', include('demo.urls')),
                        url(r'^accounts/', include('profiles.urls')),
                        url(r'^$', include('home.urls')),
@@ -14,7 +15,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-                        url(r'^comments/', include('django.contrib.comments.urls')),
+
 )
 
 
