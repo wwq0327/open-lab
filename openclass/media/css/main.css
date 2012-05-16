@@ -9,9 +9,9 @@
 }
 
 .video {
-    width: 100%;
+    width: 85%;
     display: block;
-    margin: 14px 0 8px;
+    margin: 0 auto;
     height: 553px;
 }
 
