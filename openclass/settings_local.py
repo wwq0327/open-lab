@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'demo',
     'profiles',
     'works',
+    'projects',
 
     #added,
     'south',
