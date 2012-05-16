@@ -34,10 +34,11 @@
             <li>
               <a href="{% url prj_index %}">项目</a>
             </li>
+            {% if user.authenticated %}
             <li>
               <a href="{% url prj_create %}">发起项目</a>
             </li>
-
+            {% endif %}
           </ul>
           <ul class="nav pull-right">
 
