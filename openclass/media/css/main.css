@@ -8,6 +8,12 @@
     height: 12em;
 }
 
+#id_comment {
+    margin: 5px 0;
+    width: 64em;
+    height: 10em;
+}
+
 .video {
     width: 85%;
     display: block;

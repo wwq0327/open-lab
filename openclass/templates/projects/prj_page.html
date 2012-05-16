@@ -4,14 +4,14 @@
 
 {% block content %}
 
-{% get_comment_list for projects.projects projects.id as comment_list %}
-{% get_comment_count for projects.projects projects.id as comment_count %}
-
   {% if p %}
     {% include "projects/_prj_page.html" %}
   {% else %}
     <p>页面不存在</p>
   {% endif %}
+
+{% get_comment_list for projects.projects p.id as comment_list %}
+{% get_comment_count for projects.projects p.id as comment_count %}
 
    <div class="prj-comments">
      <h4>共有 {{ comment_count }} 条评论</h4>
@@ -25,7 +25,7 @@
 
      <h4>你想说... ...</h4>
      <div>
-       {% render_comment_form for projects.projects projects.id %} <a name="#c"></a>
+       {% render_comment_form for projects.projects p.id %} <a name="#c"></a>
      </div>
    </div>
 
