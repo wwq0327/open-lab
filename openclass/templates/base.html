@@ -34,7 +34,7 @@
             <li>
               <a href="{% url prj_index %}">项目</a>
             </li>
-            {% if user.authenticated %}
+            {% if user.is_authenticated %}
             <li>
               <a href="{% url prj_create %}">发起项目</a>
             </li>
