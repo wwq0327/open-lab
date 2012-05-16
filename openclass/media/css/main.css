@@ -8,6 +8,17 @@
     height: 12em;
 }
 
+.video {
+    width: 100%;
+    display: block;
+    margin: 14px 0 8px;
+    height: 553px;
+}
+
+embed {
+    outline: 0 none;
+}
+
 
 #id_title, #id_tags, #id_video {
     width: 28em;
