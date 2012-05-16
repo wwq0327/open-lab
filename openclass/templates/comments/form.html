@@ -1,0 +1,18 @@
+{% load comments %}
+{% if user.is_authenticated %}
+
+<form action="{% comment_form_target %}" method="post" class="form-horizontal">
+
+<textarea id="id_comment" name="comment" style="overflow: hidden;"></textarea></p>
+  {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+  {% endfor %}
+<input type="hidden" name="next" value="{{ p.get_absolute_url }}" />
+<button type="submit" class="btn">贴上去</button>
+</form>
+
+{% else %}
+
+<p> 你需要 <a href="/accounts/signin/">登录</a> 才能进行回复。</p>
+
+{% endif %}

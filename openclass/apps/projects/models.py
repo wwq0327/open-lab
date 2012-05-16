@@ -23,8 +23,8 @@ class Projects(models.Model):
     image = models.ImageField(u'项目图片',
                               upload_to=determine_image_upload_path,
                               storage=ImageStorage(),
-                              blank=True,
-                              null=True,
+                              #blank=True,
+                              #null=True,
                               help_text=u'给项目一个图片，可增加你项目的关注度')
     description = models.TextField(u'项目描述', blank=True, null=True,
                                 help_text=u'给项目一个简单的描述')
@@ -33,7 +33,9 @@ class Projects(models.Model):
                           help_text=u'项目是什么，怎么做')
     content_html = models.TextField(editable=False)
     video = models.URLField(u'视频链接', max_length=255,
-                             help_text=u'你可以为你的项止录制一个关于创意的视频或课程实施的视频')
+                            blank=True,
+                            null=True,
+                            help_text=u'你可以为你的项止录制一个关于创意的视频或课程实施的视频')
     #follower = models.ForeignKey(PrjFollower)
 
     class Meta:

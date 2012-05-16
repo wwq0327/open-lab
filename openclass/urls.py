@@ -13,6 +13,11 @@ urlpatterns = patterns('',
                        url(r'^projects/', include('projects.urls')),
 )
 
+urlpatterns += patterns('',
+                        url(r'^comments/', include('django.contrib.comments.urls')),
+)
+
+
 media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')
 urlpatterns += patterns('',
                         (r'^%s/(?P<path>.*)$' % media_url, 'django.views.static.serve',

@@ -23,3 +23,7 @@ embed {
 #id_title, #id_tags, #id_video {
     width: 28em;
 }
+
+.prj_image {
+    text-align: center;
+}

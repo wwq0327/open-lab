@@ -1,11 +1,33 @@
 {% extends "sub_base.html" %}
+{% load comments %}
 
 {% block content %}
+
+{% get_comment_list for projects.projects projects.id as comment_list %}
+{% get_comment_count for projects.projects projects.id as comment_count %}
+
   {% if p %}
     {% include "projects/_prj_page.html" %}
   {% else %}
     <p>页面不存在</p>
   {% endif %}
+
+   <div class="prj-comments">
+     <h4>共有 {{ comment_count }} 条评论</h4>
+     {% for comment in comment_list %}
+       <p>
+         <a href="{% get_comment_permalink comment %}">#{{ forloop.counter }}</a>
+         <a href="#">{{ comment.user.username }}</a> 于 {{ comment.submit_date|timesince }} 前说道：
+       </p>
+       <p>{{ comment.comment|escape|linebreaks }}</p>
+     {% endfor %}
+
+     <h4>你想说... ...</h4>
+     <p>
+       {% render_comment_form for projects.projects projects.id %} <a name="#c"></a>
+     </p>
+   </div>
+
 {% endblock %}
 
 {% block sidebar %}
