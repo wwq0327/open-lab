@@ -9,6 +9,9 @@
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/bootstrap.css" media="screen">
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/main.css" media="screen">
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/bootstrap-responsive.css" media="screen">
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/class.js"></script>
+
   <style type="text/css">
     body { padding-top: 60px; padding-bottom: 40px; }
   </style>
@@ -34,14 +37,28 @@
             <li>
               <a href="{% url prj_create %}">发起项目</a>
             </li>
-            <li>
-              <a href="#">关于</a>
-            </li>
+
           </ul>
           <ul class="nav pull-right">
-            <li>
-              <a href="/accounts/signin/">登录</a>
-            </li>
+
+                <div class="btn-group">
+                  {% if user.is_authenticated %}
+                  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-user icon-white"></i>我的帐号
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <!-- dropdown menu links -->
+                    <li><a href="{% url userena_profile_detail user.username %}">个人信息</a></li>
+                    <li><a href="{% url userena_profile_edit user.username %}">信息修改</a></li>
+                    <li><a href="{% url userena_password_change user.username %}">密码修改</a></li>
+                    <li><a href="{% url userena_email_change user.username %}">邮箱修改</a></li>
+                    <li><a href="/accounts/signout/">退出</a></li>
+                  </ul>
+                  {% else %}
+                    <a href="/accounts/signin/" class="btn btn-primary">登录</a>
+                  {% endif %}
+                </div>
           </ul>
         </div>
       </div>
@@ -57,5 +74,7 @@
       <p>&copy; openlab 2012 <a href="https://github.com/wwq0327/open-lab">贡献源码</a></p>
     </footer>
   </div>
+
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/bootstrap.js"></script>
   </body>
 </html>

@@ -15,7 +15,7 @@
   <h4>『项目内容』</h4>
   <p> {{ p.content_html|safe }}</p>
   {% if p.obj_tags %}
-  <p>标签：{% for tag in p.obj_tags %}
+  <p><i class="icon-tags"></i> {% for tag in p.obj_tags %}
     <a href="#{{ tag }}"> {{ tag }} </a>
     {% endfor %}
   </p>
