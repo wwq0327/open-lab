@@ -39,7 +39,7 @@ class Projects(models.Model):
     video = models.URLField(u'视频链接', max_length=255,
                             blank=True,
                             null=True,
-                            help_text=u'你可以为你的项止录制一个关于创意的视频或课程实施的视频')
+                            help_text=u'你可以为你的项目录制一个关于创意的视频或课程实施的视频')
     #follower = models.ForeignKey(PrjFollower)
 
     class Meta:
