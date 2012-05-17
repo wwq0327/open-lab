@@ -3,7 +3,12 @@
 
 {% block title %}{% trans "Account setup" %}{% endblock %}
 
-{% block content_title %}<h2 class="content-title">Account &raquo; {{ account.user.username }}</h2>{% endblock %}
+{% block content_title %}
+  <ul class="breadcrumb">
+        <li>个人信息</li><span class="divider">/</span>
+        <li class="active">编辑信息</li>
+  </ul>
+{% endblock %}
 
 {% block content %}
 

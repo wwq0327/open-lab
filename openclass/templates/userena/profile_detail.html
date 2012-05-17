@@ -2,7 +2,13 @@
 {% load i18n %}
 
 {% block title %}{{ profile.user.username }} 的帐号信息{% endblock %}
-{% block content_title %}{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}{% endblock %}
+
+{% block content_title %}
+  <ul class="breadcrumb">
+        <li>个人信息</li><span class="divider">/</span>
+        <li class="active">个人信息</li>
+  </ul>
+{% endblock %}
 
 {% block content %}
 
