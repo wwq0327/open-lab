@@ -6,7 +6,9 @@
     <p>这里只是一个您获得知识和帮助他人的一个开始！</p>
     <p>
       <a href="#" class="btn btn-primary btn-large">了解更多 &raquo;</a>
+      {% if not user.is_authenticated %}
       <a href="/accounts/signup/" class="btn btn-success btn-large">开始注册使用</a>
+      {% endif %}
     </p>
   </div>
 
