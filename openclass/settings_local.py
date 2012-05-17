@@ -115,6 +115,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.csrf.CsrfResponseMiddleware',
     'userena.middleware.UserenaLocaleMiddleware',
+    'pagination.middleware.PaginationMiddleware'
 )
 
 ROOT_URLCONF = 'openclass.urls'
@@ -153,6 +154,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'tagging',
     'bootstrap',
+    'pagination',
 )
 
 #userena
@@ -182,6 +184,9 @@ PAGINATION_DEFAULT_PAGINATION = 10
 #pic
 MAX_IMAGE_SIZE = 1024 * 700
 MAX_UPLOAD_SIZE = 1024 * 1024 * 50
+
+PAGINATION_DEFAULT_PAGINATION = 1
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
