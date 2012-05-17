@@ -5,7 +5,7 @@
 {% block content_title %}
     <ul class="breadcrumb">
         <li>
-                <a href="#">Home</a> <span class="divider">/</span>
+                <a href="{% url h_index %}">Home</a> <span class="divider">/</span>
         </li>
         <li class="active">项目</li>
     </ul>
@@ -48,6 +48,15 @@
 <p>项目描述：</p>
 <p>{{ p.description_html|safe }}</p>
 
+<h4>关于发起人</h4>
+<p>共发起项目：＃＃＃</p>
+<p>他关注的项目： ＃＃＃</p>
+<p>发起人简介: </p>
+{% if profile %}
+<p>{{ profile.about_me }}</p>
+{% else %}
+<p>暫无信息</p>
+{% endif %}
 <h4>相关项目</h4>
 <ul>
         <li>...</li>

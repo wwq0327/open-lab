@@ -34,6 +34,10 @@ def prj_create(request):
 
 def prj_page(request, prj_pk):
     p = get_object_or_404(Projects, pk=prj_pk)
+    c_user = get_object_or_404(User, username=p.creater.username)
+    profile = c_user.get_profile()
     return render_to_response('projects/prj_page.html',
-                              {'p': p},
+                              {'p': p,
+                               'profile': profile,
+                               },
                               context_instance=RequestContext(request))
