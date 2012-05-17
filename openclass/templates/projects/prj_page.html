@@ -2,6 +2,15 @@
 {% load comments %}
 {% load i18n %}
 
+{% block content_title %}
+    <ul class="breadcrumb">
+        <li>
+                <a href="#">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">项目</li>
+    </ul>
+{% endblock %}
+
 {% block content %}
 
   {% if p %}
@@ -38,4 +47,17 @@
 <p>最后修改： {{ p.updated_date|date:"Y-m-d H:i" }}</p>
 <p>项目描述：</p>
 <p>{{ p.description_html|safe }}</p>
+
+<h4>相关项目</h4>
+<ul>
+        <li>...</li>
+        <li>...</li>
+</ul>
+
+<h4>发起人其它项目</h4>
+<ul>
+        <li>...</li>
+        <li>...</li>
+</ul>
+
 {% endblock %}

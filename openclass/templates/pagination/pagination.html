@@ -21,7 +21,7 @@
     {% if page_obj.has_next %}
         <li><a href="?page={{ page_obj.next_page_number }}{{ getvars }}{{ hashtag }}" >&raquo;</a></li>
     {% else %}
-        <li class="disabled"> &raquo;</li>
+        <li class="disabled"><a href="#">&raquo;</a> </li>
     {% endif %}
     </ul>
 </div>

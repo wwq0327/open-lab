@@ -1,6 +1,16 @@
 {% extends "sub_base.html" %}
 {% load pagination_tags %}
 
+
+{% block content_title %}
+    <ul class="breadcrumb">
+        <li>
+                <a href="#">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">项目</li>
+    </ul>
+{% endblock %}
+
 {% block content %}
 {% if prjs %}
   {% autopaginate prjs %}

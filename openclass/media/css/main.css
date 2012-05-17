@@ -1,16 +1,16 @@
 #id_content {
-    width: 64em;
+    width: 100%;
     height: 36em;
 }
 
 #id_description {
-    width: 64em;
+    width: 100%;
     height: 12em;
 }
 
 #id_comment {
     margin: 5px 0;
-    width: 64em;
+    width: 100%;
     height: 10em;
 }
 

@@ -1,7 +1,18 @@
-{% extends "base.html" %}
+{% extends "sub_base.html" %}
 
-{% block main %}
 
+{% block content_title%}
+
+
+    <ul class="breadcrumb">
+        <li>
+             <a href="#">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">创建项目</li>
+    </ul>
+{% endblock %}
+
+{% block content %}
 <form enctype="multipart/form-data" action="." method="post" id="prj_create_form" class="form-horizontal">
       <fieldset>
       {{ form.as_div }}
@@ -10,5 +21,18 @@
       </div>
       </fieldset>
 </form>
+
+{% endblock %}
+
+
+{% block sidebar %}
+
+<h4>格式帮助</h4>
+
+<p> - ....</p>
+<p> - ....</p>
+<p> - ....</p>
+<p> - ....</p>
+
 
 {% endblock %}
