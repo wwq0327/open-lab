@@ -205,18 +205,18 @@ CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar':[
-            ['Source','-','Save','NewPage','Preview','-','Templates'],
-            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
+            ['Source','-',],
+#            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
             ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-            ['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
+#            ['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
             ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
             ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
             ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
             ['Link','Unlink','Anchor'],
             ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
             ['Styles','Format','Font','FontSize'],
-            ['TextColor','BGColor'],
-            ['Maximize','ShowBlocks','-','About']
+#            ['TextColor','BGColor'],
+#            ['Maximize','ShowBlocks','-','About']
         ],
  #       'width': 650,
  #       'height': 200,
