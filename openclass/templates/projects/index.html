@@ -43,10 +43,19 @@
 {% block sidebar %}
 <h4>最新发布</h4>
 <ul>
-{% for p in prjs %}
+{% for p in new_prj %}
         <li><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></li>
 {% endfor %}
 </ul>
+
+<h4>热门讨论</h4>
+{% if top_comments %}
+  <ul>
+    {% for ct in top_comments %}
+      <li><a href="{{ ct.get_absolute_url }}">{{ ct.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
 <h4>
 {% endblock %}

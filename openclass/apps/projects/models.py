@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from tagging.fields import TagField
 from tagging.models import Tag
+from django.contrib.contenttypes.models import ContentType
 
 from ckeditor.fields import RichTextField
 
@@ -80,6 +81,14 @@ class PrjFollower(models.Model):
         return 'PrjFollower %s:%s' % (self.creater.username,
                                       self.project.title)
 
+def top_comments(num=10):
+    from django.contrib.comments import models as comment_models
+    comment_opts = comment_models.Comment._meta
+    comment_table_name = comment_opts.db_table
 
+    ctype = ContentType.objects.get(app_label="projects", model="projects")
 
-
+    return Projects.objects.extra(
+        select={
+            'c_count': 'SELECT COUNT(*) FROM %s WHERE content_type_id = %s AND is_public = 1' % (comment_table_name, ctype.id)},
+        ).order_by('-c_count')[0:num]

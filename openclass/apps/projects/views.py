@@ -7,13 +7,19 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
-from projects.models import Projects
+from projects.models import Projects, top_comments
 from projects.forms import ProjectsForm
 
 def index(request):
     prjs = Projects.objects.all()
+    new_prj = Projects.objects.all()[:10]
+
     return render_to_response('projects/index.html',
-                              {'prjs': prjs},
+                              {
+                                  'prjs': prjs,
+                                  'top_comments': top_comments(),
+                                  'new_prj': new_prj,
+                                  },
                               context_instance=RequestContext(request))
 
 @login_required
