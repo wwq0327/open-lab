@@ -32,5 +32,10 @@
 {% endblock %}
 
 {% block sidebar %}
-  aa
+<h4>项目信息</h4>
+<p>发起人：   {{ p.creater.username }}</p>
+<p>发布时间： {{ p.pub_date|date:"Y-m-d H:i" }}</p>
+<p>最后修改： {{ p.updated_date|date:"Y-m-d H:i" }}</p>
+<p>项目描述：</p>
+<p>{{ p.description_html|safe }}</p>
 {% endblock %}

@@ -1,6 +1,6 @@
 <div>
   <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
-  <p>发布时间： {{ p.pub_date|date:"Y-m-d H:i" }} 作者： {{ p.creater.username }}</p>
+
   <p class="prj_image"> <img src="{{ MEDIA_URL }}/{{ p.image }}" ></img></p>
   {% if p.video %}
   <h4>『发起人的声音』</h4>
