@@ -205,7 +205,7 @@ CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar':[
-            ['Source','-',],
+            ['Source'],
 #            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
             ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
 #            ['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],

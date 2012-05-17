@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 
+
+{% block main %}
+
 {% block content_title%}
     <ul class="breadcrumb">
         <li>
@@ -10,7 +13,6 @@
     </ul>
 {% endblock %}
 
-{% block main %}
 <form enctype="multipart/form-data" action="." method="post" id="prj_create_form" class="form-horizontal">
       <fieldset>
       {{ form.as_div }}
