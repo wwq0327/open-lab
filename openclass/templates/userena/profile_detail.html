@@ -6,14 +6,6 @@
 
 {% block content %}
 
-    {% if user.username == profile.user.username %}
-    <ul id="profile-nav">
-        <li class="selected"><a href="{% url userena_profile_detail user.username %}">个人信息</a></li>
-        <li><a href="{% url userena_profile_edit user.username %}">信息修改</a></li>
-        <li><a href="{% url userena_password_change user.username %}">密码修改</a></li>
-        <li><a href="{% url userena_email_change user.username %}">邮箱修改</a></li>
-    </ul>
-    {% endif %}
 
     <div id="details">
         <img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
