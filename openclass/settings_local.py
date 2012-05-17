@@ -186,6 +186,13 @@ PAGINATION_DEFAULT_PAGINATION = 10
 MAX_IMAGE_SIZE = 1024 * 700
 MAX_UPLOAD_SIZE = 1024 * 1024 * 50
 
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (50, 50), 'crop': True},
+    },
+}
+
+
 PAGINATION_DEFAULT_PAGINATION = 5
 
 #ckeditor
