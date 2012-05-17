@@ -155,6 +155,7 @@ INSTALLED_APPS = (
     'tagging',
     'bootstrap',
     'pagination',
+    'ckeditor',
 )
 
 #userena
@@ -187,6 +188,41 @@ MAX_UPLOAD_SIZE = 1024 * 1024 * 50
 
 PAGINATION_DEFAULT_PAGINATION = 5
 
+#ckeditor
+CKEDITOR_MEDIA_PREFIX = '/media/ckeditor/'
+CKEDITOR_UPLOAD_PATH = path('media/uploads/images')
+CKEDITOR_IMAGE_UPLOAD_EXENSIONS = ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff']
+CKEDITOR_RESTRICT_BY_USER = True
+
+
+## CKEDITOR_CONFIGS = {
+##     'default': {
+##         'toolbar': 'Full',
+##     },
+## }
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar':[
+            ['Source','-','Save','NewPage','Preview','-','Templates'],
+            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
+            ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+            ['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
+            ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['Link','Unlink','Anchor'],
+            ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+            ['Styles','Format','Font','FontSize'],
+            ['TextColor','BGColor'],
+            ['Maximize','ShowBlocks','-','About']
+        ],
+ #       'width': 650,
+ #       'height': 200,
+        'toolbarCanCollapse': False,
+    },
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

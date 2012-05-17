@@ -1,4 +1,4 @@
-{% extends "sub_base.html" %}
+{% extends "base.html" %}
 
 
 {% block content_title%}
@@ -10,7 +10,7 @@
     </ul>
 {% endblock %}
 
-{% block content %}
+{% block main %}
 <form enctype="multipart/form-data" action="." method="post" id="prj_create_form" class="form-horizontal">
       <fieldset>
       {{ form.as_div }}
@@ -23,14 +23,3 @@
 {% endblock %}
 
 
-{% block sidebar %}
-
-<h4>格式帮助</h4>
-
-<p> - ....</p>
-<p> - ....</p>
-<p> - ....</p>
-<p> - ....</p>
-
-
-{% endblock %}

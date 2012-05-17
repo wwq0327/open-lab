@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from tagging.fields import TagField
 from tagging.models import Tag
 
+from ckeditor.fields import RichTextField
+
 from utils import get_partition_id, safe_filename
 from storage import ImageStorage
 
@@ -29,7 +31,9 @@ class Projects(models.Model):
     description = models.TextField(u'项目描述', blank=True, null=True,
                                 help_text=u'给项目一个简单的描述')
     description_html = models.TextField(editable=False)
-    content = models.TextField(u'项目内容',
+    #content = models.TextField(u'项目内容',
+    #                           help_text=u'项目是什么，怎么做')
+    content =RichTextField(u'项目内容',
                           help_text=u'项目是什么，怎么做')
     content_html = models.TextField(editable=False)
     video = models.URLField(u'视频链接', max_length=255,

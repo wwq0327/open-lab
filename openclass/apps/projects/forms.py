@@ -5,8 +5,10 @@ from bootstrap.forms import BootstrapModelForm
 from projects.models import Projects
 
 from django.conf import settings
+from ckeditor.widgets import CKEditorWidget
 
 class ProjectsForm(BootstrapModelForm):
+    content = forms.CharField(label=u'项目内容', widget=CKEditorWidget())
     class Meta:
         model = Projects
         fields = ('title', 'image', 'video', 'description', 'content', 'tags', )
