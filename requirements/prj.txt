@@ -3,7 +3,9 @@ Markdown==2.1.1
 PIL==1.1.7
 South==0.7.5
 -e git://github.com/earle/django-bootstrap.git@2433b7df07f04a3a7c2ca5adf2c49f882a53ffa3#egg=bootstrap-dev
+django-ckeditor==3.6.2
 django-guardian==1.0.4
+django-pagination==1.0.7
 django-tagging==0.3.1
 django-userena==1.0.2
 easy-thumbnails==1.0
