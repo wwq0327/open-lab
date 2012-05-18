@@ -49,9 +49,12 @@ def prj_page(request, prj_pk):
                               context_instance=RequestContext(request))
 
 def prj_edit(request, prj_pk):
+    '''project edit
+    @param prj_pk: project id
+    '''
     prj = get_object_or_404(Projects, pk=prj_pk)
     if request.user != prj.creater:
-        return HttpResponseForbindden()
+        return HttpResponseForbidden()
     if request.method == 'POST':
         form = ProjectsForm(request.POST, request.FILES, instance=prj)
         if form.is_valid():
