@@ -48,7 +48,6 @@ def prj_page(request, prj_pk):
                                },
                               context_instance=RequestContext(request))
 
-<<<<<<< HEAD
 def prj_follow(request, prj_pk):
     p = get_object_or_404(Projects, pk=prj_pk)
 
@@ -61,8 +60,6 @@ def prj_follow(request, prj_pk):
 
     return HttpResponseRedirect(p.get_absolute_url())
 
-
-=======
 def prj_edit(request, prj_pk):
     '''project edit
     @param prj_pk: project id
@@ -83,4 +80,3 @@ def prj_edit(request, prj_pk):
     return render_to_response('projects/prj_create.html',
                               {'form': form},
                               context_instance=RequestContext(request))
->>>>>>> master

@@ -7,8 +7,5 @@ urlpatterns = patterns('',
                        url(r'^create/$', 'projects.views.prj_create', name="prj_create"),
                        url(r'^(?P<prj_pk>\d+)/$', 'projects.views.prj_page', name="prj_page"),
                        url(r'^(?P<prj_pk>\d+)/edit/$', 'projects.views.prj_edit', name="prj_edit"),
-<<<<<<< HEAD
                        url(r'^(?P<prj_pk>\d+)/f/$', 'projects.views.prj_follow', name="prj_f"),
-=======
->>>>>>> master
 )
