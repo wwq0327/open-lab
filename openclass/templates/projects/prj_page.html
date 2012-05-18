@@ -27,7 +27,7 @@
      {% for comment in comment_list %}
        <p>
          <a href="{% get_comment_permalink comment %}">#{{ forloop.counter }}</a>
-         <a href="#">{{ comment.user.username }}</a> 于 {{ comment.submit_date|timesince }} 前说道：
+         <a href="{% url userena_profile_detail comment.user.username %}">{{ comment.user.username }}</a> 于 {{ comment.submit_date|timesince }} 前说道：
        </p>
        <p>{{ comment.comment|escape|linebreaks }}</p>
      {% endfor %}

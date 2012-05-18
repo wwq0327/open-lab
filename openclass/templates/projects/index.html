@@ -19,7 +19,7 @@
   {% for p in prjs %}
   <div>
   <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
-  <p>发布时间： {{ p.pub_date|date:"Y-m-d H:i" }} 作者： {{ p.creater.username }}</p>
+  <p>发布时间： {{ p.pub_date|date:"Y-m-d H:i" }} 作者： <a href="{% url userena_profile_detail p.creater.username %}">{{ p.creater.username }}</a></p>
   <p class="prj_image"> <img src="{{ MEDIA_URL }}/{{ p.image }}"></p>
   <p> {{ p.description_html|safe }}</p>
   {% if p.obj_tags %}
