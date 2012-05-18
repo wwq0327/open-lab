@@ -43,7 +43,7 @@
 {% block sidebar %}
 <h4>项目信息</h4>
 <p>
-发起人：   {{ p.creater.username }}
+发起人：   <a href="{% url userena_profile_detail p.creater.username %}">{{ p.creater.username }}</a>
 
 {% if p.creater == user %}
 <a href="{% url prj_edit p.id %}">Edit</a>
