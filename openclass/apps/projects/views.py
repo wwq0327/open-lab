@@ -56,7 +56,7 @@ def prj_page(request, prj_pk):
                                'is_follow': is_follow,
                                },
                               context_instance=RequestContext(request))
-
+@login_required
 def prj_follow(request, prj_pk):
     p = get_object_or_404(Projects, pk=prj_pk)
     if request.user == p.creater:
@@ -70,6 +70,7 @@ def prj_follow(request, prj_pk):
 
     return HttpResponseRedirect(p.get_absolute_url())
 
+@login_required
 def prj_follow_del(request, prj_pk):
     p = get_object_or_404(Projects, pk=prj_pk)
     f = get_object_or_404(PrjFollower, project__pk=p.id, follower__pk=request.user.id)
@@ -77,6 +78,8 @@ def prj_follow_del(request, prj_pk):
     f.delete()
     return HttpResponseRedirect(p.get_absolute_url())
 
+
+@login_required
 def prj_edit(request, prj_pk):
     '''project edit
     @param prj_pk: project id
