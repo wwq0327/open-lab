@@ -32,4 +32,31 @@
         {% endif %}
     </div>
 
+<hr>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">发起的项目</a></li>
+    <li><a href="#tab2" data-toggle="tab">关注的项目</a></li>
+    </ul>
+    <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+    <p>
+    {% if profile.projects %}
+
+    <ul>
+    {% for p in profile.projects %}
+      <li><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+      暂末发布任何内容
+    {% endif %}
+    </p>
+    </div>
+    <div class="tab-pane" id="tab2">
+    <p>Howdy, I'm in Section 2.</p>
+    </div>
+    </div>
+    </div>
+
 {% endblock %}
