@@ -41,7 +41,13 @@
 {% endblock %}
 
 {% block sidebar %}
-<a href="{% url prj_f p.id %}" class="btn btn-primary">关注该项目</a>
+{% ifnotequal user p.creater %}
+{% if is_follow %}
+  <a href="{% url prj_fd p.id %}" class="btn btn-primary">取消关注</a>
+{% else %}
+  <a href="{% url prj_f p.id %}" class="btn btn-primary">关注该项目</a>
+{% endif %}
+{% endifnotequal %}
 <h4>项目信息</h4>
 <p>
 发起人：   <a href="{% url userena_profile_detail p.creater.username %}">{{ p.creater.username }}</a>

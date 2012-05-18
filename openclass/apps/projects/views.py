@@ -42,14 +42,25 @@ def prj_page(request, prj_pk):
     p = get_object_or_404(Projects, pk=prj_pk)
     c_user = get_object_or_404(User, username=p.creater.username)
     profile = c_user.get_profile()
+    try:
+        PrjFollower.objects.get(
+            follower__pk=request.user.id,
+            project__pk=p.id)
+        is_follow = True
+    except PrjFollower.DoesNotExist:
+        is_follow = False
+
     return render_to_response('projects/prj_page.html',
                               {'p': p,
                                'profile': profile,
+                               'is_follow': is_follow,
                                },
                               context_instance=RequestContext(request))
 
 def prj_follow(request, prj_pk):
     p = get_object_or_404(Projects, pk=prj_pk)
+    if request.user == p.creater:
+        return HttpResponseForbidden()
 
     obj, created = PrjFollower.objects.get_or_create(
         follower=request.user,
@@ -57,6 +68,13 @@ def prj_follow(request, prj_pk):
     if not created:
         obj.save()
 
+    return HttpResponseRedirect(p.get_absolute_url())
+
+def prj_follow_del(request, prj_pk):
+    p = get_object_or_404(Projects, pk=prj_pk)
+    f = get_object_or_404(PrjFollower, project__pk=p.id, follower__pk=request.user.id)
+
+    f.delete()
     return HttpResponseRedirect(p.get_absolute_url())
 
 def prj_edit(request, prj_pk):
