@@ -23,6 +23,7 @@ $('html').ajaxSend(function(event, xhr, settings) {
 
 //$(".dropdown-toggle").dropdown();
 
+/*
 $(document).ready(function() {
     $("form.form-horizontal").submit(function() {
         var comment = $("#id_comment").val();
@@ -32,3 +33,4 @@ $(document).ready(function() {
         }
     });
 });
+*/

@@ -8,6 +8,7 @@ from tagging.models import Tag
 from django.contrib.contenttypes.models import ContentType
 
 from ckeditor.fields import RichTextField
+from easy_thumbnails.fields import ThumbnailerImageField
 
 from utils import get_partition_id, safe_filename
 from storage import ImageStorage
@@ -23,12 +24,14 @@ class Projects(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     tags = TagField(u'标签', blank=True, help_text=u'加一个适合的标签以便你能更方便的对项目进行分类，标签之间请用空格分隔')
     creater = models.ForeignKey(User)
-    image = models.ImageField(u'项目图片',
-                              upload_to=determine_image_upload_path,
-                              storage=ImageStorage(),
-                              #blank=True,
-                              #null=True,
-                              help_text=u'给项目一个图片，可增加你项目的关注度')
+    ## image = models.ImageField(u'项目图片',
+    ##                           upload_to=determine_image_upload_path,
+    ##                           storage=ImageStorage(),
+    ##                           #blank=True,
+    ##                           #null=True,
+    ##                           help_text=u'给项目一个图片，可增加你项目的关注度')
+    image = ThumbnailerImageField(u'项目缩略图', upload_to='uploads/photos', blank=True)
+
     description = models.TextField(u'项目描述', blank=True, null=True,
                                 help_text=u'给项目一个简单的描述')
     description_html = models.TextField(editable=False)
