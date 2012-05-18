@@ -16,12 +16,12 @@ class Migration(SchemaMigration):
             ('updated_date', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('tags', self.gf('tagging.fields.TagField')()),
             ('creater', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
+            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
             ('description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
             ('description_html', self.gf('django.db.models.fields.TextField')()),
-            ('content', self.gf('django.db.models.fields.TextField')()),
+            ('content', self.gf('ckeditor.fields.RichTextField')()),
             ('content_html', self.gf('django.db.models.fields.TextField')()),
-            ('video', self.gf('django.db.models.fields.URLField')(max_length=255)),
+            ('video', self.gf('django.db.models.fields.URLField')(max_length=255, null=True, blank=True)),
         ))
         db.send_create_signal('projects', ['Projects'])
 
@@ -29,7 +29,7 @@ class Migration(SchemaMigration):
         db.create_table('projects_prjfollower', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('create_on', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('creater', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('follower', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('project', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['projects.Projects'])),
         ))
         db.send_create_signal('projects', ['PrjFollower'])
@@ -83,24 +83,24 @@ class Migration(SchemaMigration):
         'projects.prjfollower': {
             'Meta': {'object_name': 'PrjFollower'},
             'create_on': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'creater': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
+            'follower': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'project': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['projects.Projects']"})
         },
         'projects.projects': {
             'Meta': {'ordering': "['-pub_date']", 'object_name': 'Projects'},
-            'content': ('django.db.models.fields.TextField', [], {}),
+            'content': ('ckeditor.fields.RichTextField', [], {}),
             'content_html': ('django.db.models.fields.TextField', [], {}),
             'creater': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
             'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'description_html': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
             'pub_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'tags': ('tagging.fields.TagField', [], {}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'updated_date': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'video': ('django.db.models.fields.URLField', [], {'max_length': '255'})
+            'video': ('django.db.models.fields.URLField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})
         }
     }
 

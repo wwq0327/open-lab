@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
-from projects.models import Projects, top_comments
+from projects.models import Projects, PriFollower, top_comments
 from projects.forms import ProjectsForm
 
 def index(request):
@@ -47,3 +47,17 @@ def prj_page(request, prj_pk):
                                'profile': profile,
                                },
                               context_instance=RequestContext(request))
+
+def prj_follow(request, prj_pk):
+    p = get_object_or_404(Projects, pk=prj_pk)
+
+    obj, create = PrjFollower.objects.get_or_creater(
+        follower=request.user,
+        project=p)
+    if create:
+        pass
+    obj.save()
+
+    return HttpResponseRedirect(p.get_absolute_url())
+
+

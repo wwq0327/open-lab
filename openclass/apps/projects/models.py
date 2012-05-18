@@ -71,7 +71,7 @@ class Projects(models.Model):
 
 class PrjFollower(models.Model):
     create_on = models.DateTimeField(auto_now_add=True)
-    creater = models.ForeignKey(User)
+    follower = models.ForeignKey(User)
     project = models.ForeignKey(Projects)
 
     class Mate:
