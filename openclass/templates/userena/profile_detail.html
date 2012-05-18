@@ -54,7 +54,17 @@
     </p>
     </div>
     <div class="tab-pane" id="tab2">
-    <p>Howdy, I'm in Section 2.</p>
+    <p>
+    {% if profile.prj_follow %}
+    <ul>
+    {% for p in profile.prj_follow %}
+      <li><a href="{{ p.project.get_absolute_url }}">{{ p.project.title }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+      暂末关注任何内容
+    {% endif %}
+    </p>
     </div>
     </div>
     </div>

@@ -48,3 +48,7 @@ class Profile(UserenaBaseProfile):
         ## ps = Projects.objects.filter(createrl=u)
 
         return self.user.projects_set.all()
+
+    @property
+    def prj_follow(self):
+        return self.user.prjfollower_set.all()
