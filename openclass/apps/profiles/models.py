@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
+from projects.models import Projects
 from userena.models import UserenaBaseProfile
 
 import datetime
@@ -16,7 +17,7 @@ class Profile(UserenaBaseProfile):
     user = models.OneToOneField(User,
                                 unique=True,
                                 verbose_name=_('user'),
-                                related_name='profile') 
+                                related_name='profile')
 
     gender = models.PositiveSmallIntegerField(_('gender'),
                                               choices=GENDER_CHOICES,
@@ -41,3 +42,9 @@ class Profile(UserenaBaseProfile):
                 birthday = self.birth_date.replace(year=today.year, day=day)
             if birthday > today: return today.year - self.birth_date.year - 1
             else: return today.year - self.birth_date.year
+    @property
+    def projects(self):
+        ## u = self.objects.get(creater=self.user)
+        ## ps = Projects.objects.filter(createrl=u)
+
+        return self.user.projects_set.all()

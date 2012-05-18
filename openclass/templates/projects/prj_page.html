@@ -5,7 +5,7 @@
 {% block content_title %}
     <ul class="breadcrumb">
         <li>
-                <a href="{% url h_index %}">Home</a> <span class="divider">/</span>
+            <a href="{% url h_index %}">Home</a> <span class="divider">/</span>
         </li>
         <li class="active">项目</li>
     </ul>
@@ -27,7 +27,7 @@
      {% for comment in comment_list %}
        <p>
          <a href="{% get_comment_permalink comment %}">#{{ forloop.counter }}</a>
-         <a href="#">{{ comment.user.username }}</a> 于 {{ comment.submit_date|timesince }} 前说道：
+         <a href="{% url userena_profile_detail comment.user.username %}">{{ comment.user.username }}</a> 于 {{ comment.submit_date|timesince }} 前说道：
        </p>
        <p>{{ comment.comment|escape|linebreaks }}</p>
      {% endfor %}
@@ -43,7 +43,13 @@
 {% block sidebar %}
 <a href="#" class="btn btn-primary">关注该项目</a>
 <h4>项目信息</h4>
-<p>发起人：   {{ p.creater.username }}</p>
+<p>
+发起人：   <a href="{% url userena_profile_detail p.creater.username %}">{{ p.creater.username }}</a>
+
+{% if p.creater == user %}
+<a href="{% url prj_edit p.id %}">Edit</a>
+{% endif %}
+</p>
 <p>发布时间： {{ p.pub_date|date:"Y-m-d H:i" }}</p>
 <p>最后修改： {{ p.updated_date|date:"Y-m-d H:i" }}</p>
 <p>项目描述：</p>
