@@ -41,7 +41,7 @@
 {% endblock %}
 
 {% block sidebar %}
-<a href="#" class="btn btn-primary">关注该项目</a>
+<a href="{% url prj_f p.id %}" class="btn btn-primary">关注该项目</a>
 <h4>项目信息</h4>
 <p>
 发起人：   <a href="{% url userena_profile_detail p.creater.username %}">{{ p.creater.username }}</a>

@@ -51,12 +51,11 @@ def prj_page(request, prj_pk):
 def prj_follow(request, prj_pk):
     p = get_object_or_404(Projects, pk=prj_pk)
 
-    obj, create = PrjFollower.objects.get_or_creater(
+    obj, created = PrjFollower.objects.get_or_create(
         follower=request.user,
         project=p)
-    if create:
-        pass
-    obj.save()
+    if not created:
+        obj.save()
 
     return HttpResponseRedirect(p.get_absolute_url())
 
