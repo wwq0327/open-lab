@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
-from projects.models import Projects, PriFollower, top_comments
+from projects.models import Projects, PrjFollower, top_comments
 from projects.forms import ProjectsForm
 
 def index(request):
