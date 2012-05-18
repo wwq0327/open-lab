@@ -47,3 +47,21 @@ def prj_page(request, prj_pk):
                                'profile': profile,
                                },
                               context_instance=RequestContext(request))
+
+def prj_edit(request, prj_pk):
+    prj = get_object_or_404(Projects, pk=prj_pk)
+    if request.user != prj.creater:
+        return HttpResponseForbindden()
+    if request.method == 'POST':
+        form = ProjectsForm(request.POST, request.FILES, instance=prj)
+        if form.is_valid():
+            o = form.save(commit=False)
+            o.creater = request.user
+            o.save()
+            return HttpResponseRedirect(o.get_absolute_url())
+    else:
+        form = ProjectsForm(instance=prj)
+
+    return render_to_response('projects/prj_create.html',
+                              {'form': form},
+                              context_instance=RequestContext(request))

@@ -50,7 +50,7 @@ def ws_page(request, ws_pk):
 def ws_edit(request, ws_pk):
     ws = get_object_or_404(Works, pk=ws_pk)
     if request.user != ws.creater:
-        return HttpResponstForbindden()
+        return HttpResponseForbindden()
     if request.method == 'POST':
         form = WorksForm(request.POST, instance=ws)
         if form.is_valid():
