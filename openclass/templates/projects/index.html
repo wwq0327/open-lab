@@ -1,7 +1,7 @@
 {% extends "sub_base.html" %}
 {% load thumbnail %}
 {% load pagination_tags %}
-
+{% load comments %}
 
 {% block content_title %}
     <ul class="breadcrumb">
@@ -16,6 +16,9 @@
 {% if prjs %}
   {% autopaginate prjs %}
   {% for p in prjs %}
+
+    {% get_comment_count for projects.projects p.id as comment_count %}
+
     <p class="clearfix"></p>
     <table width="100%">
       <tbody>
@@ -36,7 +39,7 @@
             </div>
 
             <div>
-              关注数： xxx 评论数：xxx
+              关注数： {{ p.follower_count }} 评论数： {{ comment_count }}
             </div>
           </td>
         </tr>

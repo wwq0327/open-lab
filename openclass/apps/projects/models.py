@@ -71,6 +71,19 @@ class Projects(models.Model):
         self.content_html = markdown.markdown(self.content)
         super(Projects, self).save(*args, **kwargs)
 
+    @property
+    def follower_count(self):
+        #p = self.objects.get(pk=self.pk)
+        return self.prjfollower_set.all().count()
+
+    @property
+    def pub_projects(self):
+        return self.creater.projects_set.all().count()
+
+    @property
+    def project_follow_count(self):
+        return self.creater.prjfollower_set.all().count()
+
 
 class PrjFollower(models.Model):
     create_on = models.DateTimeField(auto_now_add=True)
