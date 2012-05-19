@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
-
-
 {% block main %}
 
 {% block content_title%}
     <ul class="breadcrumb">
         <li>
              <a href="{% url h_index %}">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="{% url prj_index %}">项目</a> <span class="divider">/</span>
         </li>
         <li class="active">创建项目</li>
     </ul>
