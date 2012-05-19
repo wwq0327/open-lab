@@ -69,7 +69,7 @@
 <p>共发起项目： {{ p.pub_projects }}</p>
 <p>他关注的项目： {{ p.project_follow_count }}</p>
 <p>发起人简介: </p>
-{% if profile %}
+{% if profile.about_me  %}
 <p>{{ profile.about_me }}</p>
 {% else %}
 <p>暫无信息</p>
