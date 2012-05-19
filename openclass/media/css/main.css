@@ -181,3 +181,14 @@ width: 50px;
 table {
     margin: 0px 0 12px 0;
 }
+
+/* footer */
+footer {
+    color: #777;
+    text-align: center;
+}
+
+footer p {
+    line-height: 1.5;
+    margin 0 0 1.2em;
+}
