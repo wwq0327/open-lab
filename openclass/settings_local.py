@@ -192,9 +192,6 @@ THUMBNAIL_ALIASES = {
     },
 }
 
-
-PAGINATION_DEFAULT_PAGINATION = 5
-
 #ckeditor
 CKEDITOR_MEDIA_PREFIX = '/media/ckeditor/'
 CKEDITOR_UPLOAD_PATH = path('media/uploads/images')
