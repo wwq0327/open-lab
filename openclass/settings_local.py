@@ -201,6 +201,14 @@ CKEDITOR_UPLOAD_PATH = path('media/uploads/images')
 CKEDITOR_IMAGE_UPLOAD_EXENSIONS = ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff']
 CKEDITOR_RESTRICT_BY_USER = True
 
+#BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'postmaster@sll.mailgun.org'
+EMAIL_HOST = 'smtp.mailgun.org'
+#EMAIL_PORT =
+EMAIL_HOST_USER = 'postmaster@sll.mailgun.org'
+EMAIL_HOST_PASSWORD = '5yh0dp3nk5m3'
+
+EMAIL_USE_TLS = True
 
 ## CKEDITOR_CONFIGS = {
 ##     'default': {
