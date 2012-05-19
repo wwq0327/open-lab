@@ -15,25 +15,39 @@
 {% block content %}
 {% if prjs %}
   {% autopaginate prjs %}
-  <div class="urllist">
   {% for p in prjs %}
-  <ul class="projects_off">
-    <li class="list01">
-      <a href="{{ p.get_absolute_url }}" title="{{ p.title }}"><img src="{{ p.image|thumbnail_url:'avatar'  }}" alt="">{{ p.title }}</a>
-    </li>
-    <li class="list02"> <a href="{% url userena_profile_detail p.creater.username %}">{{ p.creater.username }}</a></li>
-    <li class="list03">{{ p.description_html|safe }}</li>
-    <li class="list04">
-      <div class="projectstats">
-        <p class="widtha">关注者<strong>xxx</strong></p>
-      </div>
-    </li>
-  </ul>
+    <p class="clearfix"></p>
+    <table width="100%">
+      <tbody>
+        <tr class="item">
+          <td width="200" valign="top">
+            <a href="{{ p.get_absolute_url }}" title="{{ p.title }}"><img src="{{ p.image|thumbnail_url:'avatar'  }}" alt=""></a>
+          </td>
+          <td valign="top">
+            <div class="pl2">
+               <h4><a href="{{ p.get_absolute_url }}" title="{{ p.title }}">{{ p.title }}</a></h4>
+            </div>
+            <div>
+              发起人：<a href="{% url userena_profile_detail p.creater.username %}">{{ p.creater.username }}</a>
+              时间： {{ p.pub_date|date:"Y-m-d H:i" }}
+            </div>
+            <div>
+               <p>{{ p.description_html|safe }}</p>
+            </div>
+
+            <div>
+              关注数： xxx 评论数：xxx
+            </div>
+          </td>
+        </tr>
+     </tbody>
+   </table>
+
   {% endfor %}
 {% else %}
   <p>暂无数据</p>
 {% endif %}
-</div>
+
 
 {% paginate %} <!-- 分页功能 -->
 

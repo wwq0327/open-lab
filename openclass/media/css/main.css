@@ -171,3 +171,13 @@ width: 50px;
     text-align: left;
     width: 870px;
 }
+
+.clearfix {
+    border-bottom: 1px dashed #ddd;
+    clear: both;
+    line-height: 100%;
+}
+
+table {
+    margin: 0px 0 12px 0;
+}
