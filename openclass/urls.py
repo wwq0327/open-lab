@@ -15,7 +15,9 @@ urlpatterns = patterns('',
                        url(r'^projects/', include('projects.urls')),
 )
 
+#static page
 urlpatterns += patterns('',
+                        url(r'', include('static.urls')),
 
 )
 

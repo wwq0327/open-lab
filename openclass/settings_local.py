@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'profiles',
 #    'works',
     'projects',
+    'static',
 
     #added,
     'south',
