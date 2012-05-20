@@ -13,6 +13,7 @@ urlpatterns = patterns('',
                        url(r'^$', include('home.urls')),
                        #url(r'^works/', include('works.urls')),
                        url(r'^projects/', include('projects.urls')),
+                       url(r'^tags/', include('tags.urls')),
 )
 
 #static page

@@ -220,3 +220,20 @@ footer p {
     border-bottom: 1px dashed #ccc;
     margin-bottom: 3px;
 }
+
+/* clouds */
+#tag-cloud {
+        margin: 10px 0 10px 0;
+
+}
+
+#tag-cloud a {
+    margin: 0 0.2em;
+}
+
+.tag-cloud-0 { font-size: 60%;}
+.tag-cloud-1 { font-size: 90%;}
+.tag-cloud-2 { font-size: 120%;}
+.tag-cloud-3 { font-size: 150%;}
+.tag-cloud-4 { font-size: 180%;}
+.tag-cloud-5 { font-size: 210%;}

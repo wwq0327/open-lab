@@ -146,6 +146,7 @@ INSTALLED_APPS = (
 #    'works',
     'projects',
     'static',
+    'tags',
 
     #added,
     'south',
@@ -208,6 +209,9 @@ EMAIL_HOST_USER = 'postmaster@sll.mailgun.org'
 EMAIL_HOST_PASSWORD = '5yh0dp3nk5m3'
 
 EMAIL_USE_TLS = True
+
+# tags
+TAG_LIST_LEVEL = 5
 
 ## CKEDITOR_CONFIGS = {
 ##     'default': {

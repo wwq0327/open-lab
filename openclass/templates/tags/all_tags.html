@@ -1,0 +1,26 @@
+{% extends "tags/sub_base.html" %}
+
+{% block main %}
+{% block content_title %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{% url h_index %}">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="{% url prj_index %}">项目</a> <span class="divider">/</span>
+        </li>
+        <li class="active">所有项目Tag</li>
+    </ul>
+{% endblock %}
+
+<div id="tag-cloud">
+  {% if clouds %}
+    {% for tag in clouds %}
+      <a href="{% url prj_tag  tag.name %}" class="tag-cloud-{{ tag.font_size }}">{{ tag.name }}</a>
+    {% endfor %}
+  {% else %}
+    <p>暂时还没有Tag... ... </p>
+{% endif %}
+</div>
+{% endblock %}
+

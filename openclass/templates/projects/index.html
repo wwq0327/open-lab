@@ -11,7 +11,7 @@
         <li>
             <a href="{% url prj_index %}">项目</a> <span class="divider">/</span>
         </li>
-        <li class="active">所有项目</li>
+        <li class="active">{% if tag %}含“<em><b>{{ tag }}</b></em>”的项目{% else %}所有项目{% endif %}</li>
     </ul>
 {% endblock %}
 
