@@ -73,15 +73,15 @@
 <a href="{% url prj_edit p.id %}">Edit</a>
 {% endif %}
 </p>
-<p>关注次数： {{ p.follower_count }}</p>
+<p>关注次数： <span class="badge badge-info">{{ p.follower_count }}</span></p>
 <p>发布时间： {{ p.pub_date|date:"Y-m-d H:i" }}</p>
 <p>最后修改： {{ p.updated_date|date:"Y-m-d H:i" }}</p>
 <p>项目描述：</p>
 <p>{{ p.description_html|safe }}</p>
 
 <h4>关于发起人</h4>
-<p>共发起项目： {{ p.pub_projects }}</p>
-<p>他关注的项目： {{ p.project_follow_count }}</p>
+<p>共发起项目： <span class="badge badge-info">{{ p.pub_projects }}</span></p>
+<p>他关注的项目： <span class="badge badge-info">{{ p.project_follow_count }}</span></p>
 <p>发起人简介: </p>
 {% if profile.about_me  %}
 <p>{{ profile.about_me }}</p>

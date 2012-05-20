@@ -237,3 +237,8 @@ footer p {
 .tag-cloud-3 { font-size: 150%;}
 .tag-cloud-4 { font-size: 180%;}
 .tag-cloud-5 { font-size: 210%;}
+
+
+.prj-count {
+    text-align: right;
+}

@@ -41,8 +41,8 @@
                <p>{{ p.description_html|safe }}</p>
             </div>
 
-            <div>
-              关注数： {{ p.follower_count }} 评论数： {{ comment_count }}
+            <div class="prj-count">
+              关注数： {{ p.follower_count }}  评论数： {{ comment_count }}
             </div>
           </td>
         </tr>
@@ -54,7 +54,7 @@
   <p>暂无数据</p>
 {% endif %}
 
-
+<p class="clearfix"></p>
 {% paginate %} <!-- 分页功能 -->
 
 {% endblock %}
