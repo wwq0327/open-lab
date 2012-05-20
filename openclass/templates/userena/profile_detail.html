@@ -86,11 +86,16 @@
 
     <!-- tab3 -->
     <div class="tab-pane" id="tab3">
-
-      <ul>
-        <li>Tags</li>
+      {% if profile.user_tags %}
+        <div id="tag-cloud">
+        {% for tag in profile.user_tags %}
+          <a class="tag-cloud-{{ tag.font_size }}" href="{% url prj_user_tag tag.name profile.user.username %}"">{{ tag.name }}</a>
+        {% endfor %}
+        </div>
       </ul>
-
+      {% else %}
+        <p>暂无tag.</p>
+      {% endif %}
     </div>
 
     </div>

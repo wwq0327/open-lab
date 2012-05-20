@@ -1,9 +1,13 @@
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 from projects.models import Projects
 from userena.models import UserenaBaseProfile
+
+from tagging.models import Tag
+from tagging.utils import calculate_cloud, LOGARITHMIC
 
 import datetime
 
@@ -52,3 +56,12 @@ class Profile(UserenaBaseProfile):
     @property
     def prj_follow(self):
         return self.user.prjfollower_set.all()
+
+    @property
+    def user_tags(self):
+        tags = Tag.objects.usage_for_model(Projects,
+                                          counts=True,
+                                          filters=dict(creater__username=self.user.username))
+        clouds = calculate_cloud(tags, steps=settings.TAG_LIST_LEVEL, distribution=LOGARITHMIC)
+        return clouds
+
