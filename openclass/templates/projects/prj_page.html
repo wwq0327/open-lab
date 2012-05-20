@@ -95,10 +95,14 @@
 </ul>
 
 <h4>发起人其它项目</h4>
+{% if p.other_prj %}
 <ul>
   {% for opj in p.other_prj %}
-        <li><a href="{{ opj.get_absolute_url }}">{{ opj.title }}</a>  </li>
+        <li><a href="{{ opj.get_absolute_url }}">{{ opj.title }}</a></li>
   {% endfor %}
-</ul>
+  </ul>
+{% else %}
+    <p>暂无其它项目的信息</p>
+{% endif %}
 
 {% endblock %}
