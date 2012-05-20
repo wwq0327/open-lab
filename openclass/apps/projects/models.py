@@ -86,10 +86,10 @@ class Projects(models.Model):
 
     @property
     def other_prj(self):
-        return self.creater.projects_set.all()[:10]
+        '''显示本条目外的作者其它项目'''
+        return self.creater.projects_set.exclude(pk=self.pk).all()[:10]
 
-
-class PrjFollower(models.Model):
+ class PrjFollower(models.Model):
     create_on = models.DateTimeField(auto_now_add=True)
     follower = models.ForeignKey(User)
     project = models.ForeignKey(Projects)
