@@ -11,36 +11,51 @@
 {% endblock %}
 
 {% block content %}
-
-
-    <div id="details">
-        <img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
-        {% if profile.user.get_full_name %}
-        <p><strong>昵称</strong><br /> {{ profile.user.get_full_name }}</p>
-        {% endif %}
-        {% if profile.age != 0 %}
-        <p><strong>年龄</strong><br /> {{ profile.age }}</p>
-        {% endif %}
-        {% if profile.website %}
-        <p><strong>网站</strong><br /> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
-        {% endif %}
-        {% if profile.location %}
-        <p><strong>来自</strong><br />{{ profile.location }}</p>
-        {% endif %}
-        {% if profile.about_me %}
-        <p><strong>About me</strong><br />{{ profile.about_me }}</p>
-        {% endif %}
-    </div>
+    <table width="100%">
+      <tbody>
+        <tr class="item">
+          <td width="200" valign="top">
+            <img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
+          </td>
+          <td valign="top">
+            <div>
+              {% if profile.user.get_full_name %}
+                <strong>昵称</strong>: {{ profile.user.get_full_name }}
+              {% endif %}
+              {% if profile.age != 0 %}
+                <strong>年龄</strong>: {{ profile.age }}
+              {% endif %}
+              {% if profile.location %}
+                <strong>来自</strong>: {{ profile.location }}
+              {% endif %}
+            </div>
+            <div>
+              {% if profile.website %}
+                <strong>网站</strong>: <a href="{{ profile.website }}">{{ profile.website }}</a>
+              {% endif %}
+            </div>
+            <div>
+              {% if profile.about_me %}
+                <strong>About me</strong><br />{{ profile.about_me }}
+              {% endif %}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
 <hr>
     <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">发起的项目</a></li>
     <li><a href="#tab2" data-toggle="tab">关注的项目</a></li>
+    <li><a href="#tab3" data-toggle="tab">Ta的标签</a></li>
     </ul>
+
     <div class="tab-content">
+    <!-- tab1 -->
     <div class="tab-pane active" id="tab1">
-    <p>
+
     {% if profile.projects %}
 
     <ul>
@@ -51,10 +66,12 @@
     {% else %}
       暂末发布任何内容
     {% endif %}
-    </p>
+
     </div>
+
+    <!-- tab2 -->
     <div class="tab-pane" id="tab2">
-    <p>
+
     {% if profile.prj_follow %}
     <ul>
     {% for p in profile.prj_follow %}
@@ -64,9 +81,19 @@
     {% else %}
       暂末关注任何内容
     {% endif %}
-    </p>
+
     </div>
+
+    <!-- tab3 -->
+    <div class="tab-pane" id="tab3">
+
+      <ul>
+        <li>Tags</li>
+      </ul>
+
     </div>
+
     </div>
+    </div> <!-- endtab -->
 
 {% endblock %}
