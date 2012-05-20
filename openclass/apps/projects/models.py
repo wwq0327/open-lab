@@ -84,6 +84,10 @@ class Projects(models.Model):
     def project_follow_count(self):
         return self.creater.prjfollower_set.all().count()
 
+    @property
+    def other_prj(self):
+        return self.creater.projects_set.all()[:10]
+
 
 class PrjFollower(models.Model):
     create_on = models.DateTimeField(auto_now_add=True)
