@@ -190,6 +190,7 @@ MAX_UPLOAD_SIZE = 1024 * 1024 * 50
 THUMBNAIL_ALIASES = {
     '': {
         'avatar': {'size': (168, 168), 'crop': True},
+        'header': {'size': (48, 48), 'crop': True},
     },
 }
 
