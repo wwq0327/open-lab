@@ -30,7 +30,7 @@ class Projects(models.Model):
     ##                           #blank=True,
     ##                           #null=True,
     ##                           help_text=u'给项目一个图片，可增加你项目的关注度')
-    image = ThumbnailerImageField(u'项目缩略图', upload_to='uploads/photos', blank=True)
+    image = ThumbnailerImageField(u'项目缩略图', upload_to='uploads/photos')
 
     description = models.TextField(u'项目描述', blank=True, null=True,
                                 help_text=u'给项目一个简单的描述')
