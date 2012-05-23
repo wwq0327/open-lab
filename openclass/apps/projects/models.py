@@ -91,6 +91,9 @@ class Projects(models.Model):
         '''显示本条目外的作者其它项目'''
         return self.creater.projects_set.exclude(pk=self.pk).all()[:10]
 
+    def desc(self):
+        return u'发起新项目《%s》！' % self.title
+
 class PrjFollower(models.Model):
     create_on = models.DateTimeField(auto_now_add=True)
     follower = models.ForeignKey(User)

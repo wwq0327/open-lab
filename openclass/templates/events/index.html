@@ -16,7 +16,7 @@
 {% if events %}
   <ul>
   {% for e in events %}
-    <li>{{ e.event.title }}</li>
+    <li>{{ e.author.username }} 在　{{ e.created|date:"Y-m-d H:i" }} <a href="{{ e.url }}">{{ e.desc }}</a></li>
   {% endfor %}
   </ul>
 {% endif %}
