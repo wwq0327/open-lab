@@ -14,6 +14,7 @@ urlpatterns = patterns('',
                        #url(r'^works/', include('works.urls')),
                        url(r'^projects/', include('projects.urls')),
                        url(r'^tags/', include('tags.urls')),
+                       url(r'^events/', include('events.urls')),
 )
 
 #static page

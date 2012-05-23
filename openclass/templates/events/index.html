@@ -1,0 +1,24 @@
+{% extends "events/sub_base.html" %}
+
+{% block main %}
+{% block content_title %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{% url h_index %}">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="{% url events_index %}">动态</a> <span class="divider">/</span>
+        </li>
+        <li class="active">全站动态</li>
+    </ul>
+{% endblock %}
+
+{% if events %}
+  <ul>
+  {% for e in events %}
+    <li>{{ e.event.title }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}
+
