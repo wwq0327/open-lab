@@ -93,7 +93,7 @@ class Projects(models.Model):
         return self.creater.projects_set.exclude(pk=self.pk).all()[:10]
 
     def desc(self):
-        return u'发起新项目《%s》。' % self.title
+        return u'发起新项目 <a href="%s">%s</a>。' % (self.get_absolute_url(), self.title)
 
 class PrjFollower(models.Model):
     create_on = models.DateTimeField(auto_now_add=True)
@@ -108,7 +108,11 @@ class PrjFollower(models.Model):
                                       self.project.title)
 
     def desc(self):
-        pass
+        return u'关注了 <a href="/accounts/%s">%s</a> 发起的项目 <a href="%s">%s</a>' % (
+            self.project.creater.username,
+            self.project.creater.username,
+            self.project.get_absolute_url(),
+            self.project.title)
 
 def top_comments(num=10):
     from django.contrib.comments import models as comment_models

@@ -19,7 +19,10 @@
     <li>
       <a href="{% url userena_profile_detail e.author.username %}">{{ e.author.username }} </a>
     在 {{ e.created|date:"Y-m-d H:i" }}
-    {{ e.desc }}</li>
+    {% autoescape off %}
+    {{ e.desc }}
+    {% endautoescape %}
+    </li>
   {% endfor %}
   </ul>
 {% endif %}
