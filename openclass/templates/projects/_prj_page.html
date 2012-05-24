@@ -11,6 +11,10 @@
   {% endif %}
   <h4>『项目内容』</h4>
   <p> {{ p.content_html|safe }}</p>
+  {% if p.needhelp %}
+    <h4>『需要帮助』</h4>
+    <p>{{ p.needhelp|linebreaksbr }}</p>
+  {% endif %}
   {% if p.obj_tags %}
   <p><i class="icon-tags"></i> {% for tag in p.obj_tags %}
     <a href="{% url prj_tag tag %}"> {{ tag }} </a>

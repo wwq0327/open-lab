@@ -46,6 +46,8 @@ class Projects(models.Model):
                             blank=True,
                             null=True,
                             help_text=u'你可以为你的项目录制一个关于创意的视频或课程实施的视频')
+    needhelp = models.TextField(u'需要帮助', blank=True, null=True,
+                                help_text=u'如果你需要帮助，可你可列到这里来')
     #follower = models.ForeignKey(PrjFollower)
 
     class Meta:
@@ -105,6 +107,9 @@ class PrjFollower(models.Model):
     def __unicode__(self):
         return 'PrjFollower %s:%s' % (self.creater.username,
                                       self.project.title)
+
+    def desc(self):
+        pass
 
 def top_comments(num=10):
     from django.contrib.comments import models as comment_models

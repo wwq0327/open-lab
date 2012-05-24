@@ -11,7 +11,7 @@ class ProjectsForm(BootstrapModelForm):
     content = forms.CharField(label=u'项目内容', widget=CKEditorWidget())
     class Meta:
         model = Projects
-        fields = ('title', 'image', 'video', 'description', 'content', 'tags', )
+        fields = ('title', 'image', 'video', 'description', 'content', 'needhelp', 'tags', )
 
     def clean_image(self):
         if self.cleaned_data['image'].size > settings.MAX_IMAGE_SIZE:
@@ -34,6 +34,7 @@ class ProjectsForm(BootstrapModelForm):
                              video=self.cleaned_data['video'],
                              description=self.cleaned_data['descript'],
                              content=self.cleaned_data['content'],
+                             needhelp = self.cleaned_data['needhelp'],
                              tags=self.cleaned_data['tags'],
                              #creater=user
                              )

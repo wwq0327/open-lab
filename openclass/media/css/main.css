@@ -3,7 +3,7 @@
     height: 42em;
 }
 
-#id_description {
+#id_description, #id_needhelp {
     width: 824px;
     height: 12em;
 }
