@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'projects',
     'static',
     'tags',
+    'events',
 
     #added,
     'south',

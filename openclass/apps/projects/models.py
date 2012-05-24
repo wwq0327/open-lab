@@ -6,12 +6,14 @@ from django.contrib.auth.models import User
 from tagging.fields import TagField
 from tagging.models import Tag
 from django.contrib.contenttypes.models import ContentType
-
+from django.db.models.signals import post_save
 from ckeditor.fields import RichTextField
 from easy_thumbnails.fields import ThumbnailerImageField
 
-from utils import get_partition_id, safe_filename
-from storage import ImageStorage
+from events.models import Event
+
+#from utils import get_partition_id, safe_filename
+#from storage import ImageStorage
 
 def determine_image_upload_path(instance, filename):
     return "uploads/%(filename)s" % {
@@ -89,6 +91,9 @@ class Projects(models.Model):
         '''显示本条目外的作者其它项目'''
         return self.creater.projects_set.exclude(pk=self.pk).all()[:10]
 
+    def desc(self):
+        return u'发起新项目《%s》。' % self.title
+
 class PrjFollower(models.Model):
     create_on = models.DateTimeField(auto_now_add=True)
     follower = models.ForeignKey(User)
@@ -112,3 +117,22 @@ def top_comments(num=10):
         select={
             'c_count': 'SELECT COUNT(*) FROM %s WHERE content_type_id = %s AND is_public = 1' % (comment_table_name, ctype.id)},
         ).order_by('-c_count')[0:num]
+
+##############
+#   Signal   #
+##############
+
+def project_post_save(sender, **kwargs):
+    project = kwargs.get('instance', None)
+    if isinstance(project, Projects):
+        event = Event(author=project.creater, event=project)
+        event.save()
+
+def follow_post_save(sender, **kwargs):
+    follow = kwargs.get('instance', None)
+    if isinstance(follow, PrjFollower):
+        event = Event(author=follow.follower, event=follow)
+        event.save()
+
+post_save.connect(project_post_save, sender=Projects)
+post_save.connect(follow_post_save, sender=PrjFollower)
