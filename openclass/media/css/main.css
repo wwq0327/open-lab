@@ -243,4 +243,9 @@ footer p {
     text-align: right;
 }
 
+.prj_header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
 
