@@ -1,6 +1,7 @@
 {% extends "events/sub_base.html" %}
 
 {% block main %}
+
 {% block content_title %}
     <ul class="breadcrumb">
         <li>
@@ -19,12 +20,15 @@
     <li>
       <a href="{% url userena_profile_detail e.author.username %}">{{ e.author.username }} </a>
     在 {{ e.created|date:"Y-m-d H:i" }}
-    {% autoescape off %}
-    {{ e.desc }}
-    {% endautoescape %}
+    {% if e.content_type.name == "projects" %}
+      发起新的项目 <a href="{{ e.event.get_absolute_url }}">{{ e.event.title }}</a>
+    {% else%}
+      关注了新的项目 <a href="{{ e.event.project.get_absolute_url }}">{{ e.event.project.title }}</a>
+    {% endif %}
     </li>
   {% endfor %}
   </ul>
 {% endif %}
+
 {% endblock %}
 

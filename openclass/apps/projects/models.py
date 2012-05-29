@@ -10,6 +10,9 @@ from django.db.models.signals import post_save
 from ckeditor.fields import RichTextField
 from easy_thumbnails.fields import ThumbnailerImageField
 
+from django.contrib.comments.models import Comment
+from django.contrib.comments.signals import comment_was_posted
+
 from events.models import Event
 
 #from utils import get_partition_id, safe_filename
@@ -92,8 +95,8 @@ class Projects(models.Model):
         '''显示本条目外的作者其它项目'''
         return self.creater.projects_set.exclude(pk=self.pk).all()[:10]
 
-    def desc(self):
-        return u'发起新项目 <a href="%s">%s</a>。' % (self.get_absolute_url(), self.title)
+    ## def desc(self):
+    ##     return u'发起新项目 <a href="%s">%s</a>。' % (self.get_absolute_url(), self.title)
 
 class PrjFollower(models.Model):
     create_on = models.DateTimeField(auto_now_add=True)
@@ -107,12 +110,12 @@ class PrjFollower(models.Model):
         return 'PrjFollower %s:%s' % (self.creater.username,
                                       self.project.title)
 
-    def desc(self):
-        return u'关注了 <a href="/accounts/%s">%s</a> 发起的项目 <a href="%s">%s</a>' % (
-            self.project.creater.username,
-            self.project.creater.username,
-            self.project.get_absolute_url(),
-            self.project.title)
+    ## def desc(self):
+    ##     return u'关注了 <a href="/accounts/%s">%s</a> 发起的项目 <a href="%s">%s</a>' % (
+    ##         self.project.creater.username,
+    ##         self.project.creater.username,
+    ##         self.project.get_absolute_url(),
+    ##         self.project.title)
 
 def top_comments(num=10):
     from django.contrib.comments import models as comment_models
@@ -135,12 +138,26 @@ def project_post_save(sender, **kwargs):
     if isinstance(project, Projects):
         event = Event(author=project.creater, event=project)
         event.save()
+        ## event, created = Event.objects.get_or_create(author=project.creater, event=project)
+        ## if not created:
+        ##     event.save()
 
 def follow_post_save(sender, **kwargs):
     follow = kwargs.get('instance', None)
     if isinstance(follow, PrjFollower):
         event = Event(author=follow.follower, event=follow)
         event.save()
+        ## event, created = Event.objects.get_or_create(author=follow.follower, event=follow)
+        ## if not created:
+        ##     event.save()
+
+def prj_comment(sender, comment, **kwargs):
+    #comment = kwargs.get('instance', None)
+    if comment.is_public:
+        event = Event(author=comment.user, event=Comment)
+        event.save()
 
 post_save.connect(project_post_save, sender=Projects)
 post_save.connect(follow_post_save, sender=PrjFollower)
+#post_save.connect(prj_comment, sender=Comment)
+comment_was_posted.connect(prj_comment, sender=Comment)
