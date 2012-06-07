@@ -55,6 +55,9 @@ class Projects(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
+    ## def __init__(self, *args, **kwargs):
+    ##     super(Projects, self).__init__(*args, **kwargs)
+
     def __unicode__(self):
         return 'Projects %s:%s' % (self.pk, self.title)
 
