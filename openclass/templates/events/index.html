@@ -14,26 +14,7 @@
     </ul>
 {% endblock %}
 
-{% if events %}
-  <ul>
-  {% for e in events %}
-    <li>
-      <a href="{% url userena_profile_detail e.author.username %}">{{ e.author.username }} </a>
-    在 {{ e.created|date:"Y-m-d H:i" }}
-    {% if e.content_type.name == "projects" %}
-      发起新的项目 <a href="{{ e.event.get_absolute_url }}">{{ e.event.title }}</a>
-    {% else%}
-      {% if e.content_type.name == "comment" %}
-        对　<a href="{{ e.event.content_object.get_absolute_url }}">{{ e.event.content_object.title }}</a> 评论道:
-        <p>{{ e.event.comment|safe }}</p>
-　　　　{% else %}
-        关注了新的项目 <a href="{{ e.event.project.get_absolute_url }}">{{ e.event.project.title }}</a>
-      {% endif %}
-    {% endif %}
-    </li>
-  {% endfor %}
-  </ul>
-{% endif %}
+{% include "events/_home_event.html" %}
 
 {% endblock %}
 
