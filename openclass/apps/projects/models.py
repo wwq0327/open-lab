@@ -157,7 +157,7 @@ def follow_post_save(sender, **kwargs):
 def prj_comment(sender, comment, **kwargs):
     #comment = kwargs.get('instance', None)
     if comment.is_public:
-        event = Event(author=comment.user, event=Comment)
+        event = Event(author=comment.user, event=comment)
         event.save()
 
 post_save.connect(project_post_save, sender=Projects)
