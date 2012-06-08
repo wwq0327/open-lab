@@ -217,6 +217,8 @@ footer p {
 }
 
 .comment-one {
+    clear: both;
+    display: block;
     border-bottom: 1px dashed #ccc;
     margin-bottom: 3px;
 }

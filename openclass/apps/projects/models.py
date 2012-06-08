@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from tagging.fields import TagField
 from tagging.models import Tag
 from django.contrib.contenttypes.models import ContentType
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from ckeditor.fields import RichTextField
 from easy_thumbnails.fields import ThumbnailerImageField
 
@@ -110,7 +110,7 @@ class PrjFollower(models.Model):
         ordering = ['-id']
 
     def __unicode__(self):
-        return 'PrjFollower %s:%s' % (self.creater.username,
+        return 'PrjFollower %s:%s' % (self.project.creater.username,
                                       self.project.title)
 
     ## def desc(self):
@@ -154,6 +154,15 @@ def follow_post_save(sender, **kwargs):
         ## if not created:
         ##     event.save()
 
+def follow_post_del(sender, **kwargs):
+    follow = kwargs.get('instance', None)
+    if isinstance(follow, PrjFollower):
+        ctype = ContentType.objects.get(app_label="projects", model="prjfollower")
+        event = Event.objects.get(object_id=follow.id,
+                                  author=follow.follower,
+                                  content_type=ctype.id)
+        event.delete()
+
 def prj_comment(sender, comment, **kwargs):
     #comment = kwargs.get('instance', None)
     if comment.is_public:
@@ -162,5 +171,6 @@ def prj_comment(sender, comment, **kwargs):
 
 post_save.connect(project_post_save, sender=Projects)
 post_save.connect(follow_post_save, sender=PrjFollower)
+post_delete.connect(follow_post_del, sender=PrjFollower)
 #post_save.connect(prj_comment, sender=Comment)
 comment_was_posted.connect(prj_comment, sender=Comment)
