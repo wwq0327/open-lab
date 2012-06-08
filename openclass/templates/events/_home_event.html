@@ -1,8 +1,20 @@
+{% load thumbnail %}
 {% if events %}
-  <ul>
+  <div class="event">
   {% for e in events %}
-    <li>
+    <div class="comment-one">
+
+      <div class="tc_left user-img-s">
+        {% if e.author.profile.mugshot %}
+          <img src="{ thumbnail e.author.profile.mugshot 48x48 crop %}"></img>
+        {% else %}
+          <img src="{{ e.author.profile.get_mugshot_url }}" height="48" width="48"></img>
+        {% endif %}
+      </div>
+
+      <div class="tc_right">
       <a href="{% url userena_profile_detail e.author.username %}">{{ e.author.username }} </a>
+
     在 {{ e.created|date:"Y-m-d H:i" }}
     {% if e.content_type.name == "projects" %}
       发起新的项目 <a href="{{ e.event.get_absolute_url }}">{{ e.event.title }}</a>
@@ -14,8 +26,10 @@
         关注了新的项目 <a href="{{ e.event.project.get_absolute_url }}">{{ e.event.project.title }}</a>
       {% endif %}
     {% endif %}
-    </li>
+    </div>
+    </div>
   {% endfor %}
-  </ul>
+
+  </div>
 {% endif %}
 
