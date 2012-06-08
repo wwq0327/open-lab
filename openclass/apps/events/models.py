@@ -12,6 +12,9 @@ class Event(models.Model):
     event = generic.GenericForeignKey('content_type', 'object_id')
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-id']
+
     ## def desc(self):
     ##     return self.event.desc()
 
