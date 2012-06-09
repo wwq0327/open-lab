@@ -38,16 +38,9 @@
             <li>
               <a href="{% url prj_index %}">项目</a>
             </li>
-            {% if user.is_authenticated %}
-            <li>
-              <a href="{% url prj_create %}">发起项目</a>
-            </li>
-            {% endif %}
+
             <li>
               <a href="{% url all_tags %}">标签云</a>
-            </li>
-            <li>
-              <a href="{% url events_index %}">事件</a>
             </li>
 
           </ul>

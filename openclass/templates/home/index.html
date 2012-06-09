@@ -2,24 +2,26 @@
 
 {% block main %}
 
-  {% if not user.is_authenticated %}
-    {% include "home/_welcome.html" %}
-  {% else %}
+  {% if user.is_authenticated %}
+
   <div class="row">
     {% block content %}
       <!-- 事件主体 -->
-      <div class="span9">
+      <div class="span8">
          {% include "events/_home_event.html" %}
       </div>
       <!-- 事件end -->
     {% endblock %}
 
     <!-- 侧边信息 -->
-    <div class="span3">
-       侧边信息
+    <div class="span4">
+       {% include "home/_side.html" %}
     </div>
     <!-- 侧边end -->
   </div>
+  {% else %}
+    {% include "home/_welcome.html" %}
+
   {% endif %}
 
 {% endblock %}

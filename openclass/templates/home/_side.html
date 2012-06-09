@@ -1,0 +1,50 @@
+{% load thumbnail %}
+
+<div>
+  <div class="proinfo">
+    <div class="profile-header">
+      {% if user.profile.mugshot %}
+        <img src="{% thumbnail user.profile.mugshot 48x48 crop %}"></img>
+      {% else %}
+        <img src="{{ user.profile.get_mugshot_url }}" height="48" width="48"></img>
+      {% endif %}
+    </div>
+    <div class="proname">
+    <div class="profile-name">你好，　{{ user.username }}</div>
+
+    <div class="proinfo-info clear-fix">
+      <ul>
+        <li>创建 {{ user.projects_set.all|length }} 项目</li>
+        <li> | </li>
+        <li>项目被关注 {{ get_follow }} 次</li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="well">
+
+  <a href="{% url prj_create %}" class="btn btn-primary btn-large">创建新项目</a>
+</div>
+
+<div>
+　　<h4>项目列表</h4>
+   {% if user.projects_set.all %}
+   <ul>
+   {% for p in user.projects_set.all %}
+     <li><a href="{{ p.get_absolute_url }}">{{ p.title}}</a></li>
+     {% endfor %}
+   </ul>
+   {% else %}
+     <p>你暂时还末创建任何项目</p>
+   {% endif %}
+</div>
+
+<div>
+  <h4>关注我们</h4>
+  <ul>
+    <li>新浪微博：ＸＸＸＸ</li>
+    <li>Twitter：ＸＸＸＸ</li>
+  </ul>
+</div>
