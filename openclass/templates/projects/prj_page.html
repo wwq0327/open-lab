@@ -3,6 +3,10 @@
 {% load comments %}
 {% load i18n %}
 
+{% if p %}
+  {% block title %} {{ p.title }}{% endblock %}
+{% endif %}
+
 {% block content_title %}
     <ul class="breadcrumb">
         <li>

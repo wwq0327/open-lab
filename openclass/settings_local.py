@@ -169,6 +169,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 #LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
+USERENA_SIGNIN_REDIRECT_URL="/"
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'

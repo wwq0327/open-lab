@@ -1,5 +1,8 @@
+{% load pagination_tags %}
+
 {% load thumbnail %}
 {% if events %}
+  {% autopaginate events 10 %}
   <div class="event">
   {% for e in events %}
     <div class="comment-one">
@@ -35,5 +38,7 @@
     </div>
   {% endfor %}
   </div>
+
+  {% paginate %}
 {% endif %}
 
