@@ -20,25 +20,17 @@ class ProjectsForm(BootstrapModelForm):
 
         return self.cleaned_data['image']
 
-    ## def save(self, force_insert=False, force_update=False, commit=True):
-    ##     project = super(ProjectsForm, self).save(commint=commint)
-    ##     #user = project.user
-    ##     project.image = self.clean_image()
-    ##     project.save()
+    def save(self):
+        model = Projects(title=self.cleaned_data['title'],
+                         image=self.cleaned_data['image'],
+                         video=self.cleaned_data['video'],
+                         description=self.cleaned_data['descript'],
+                         content=self.cleaned_data['content'],
+                         needhelp = self.cleaned_data['needhelp'],
+                         tags=self.cleaned_data['tags'],
+                         #creater=user
+                         )
+        model.save()
 
-    ##     return project
-
-        def save(self):
-            model = Projects(title=self.cleaned_data['title'],
-                             image=self.cleaned_data['image'],
-                             video=self.cleaned_data['video'],
-                             description=self.cleaned_data['descript'],
-                             content=self.cleaned_data['content'],
-                             needhelp = self.cleaned_data['needhelp'],
-                             tags=self.cleaned_data['tags'],
-                             #creater=user
-                             )
-            model.save()
-
-            return model
+        return model
 
